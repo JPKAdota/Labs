@@ -2,17 +2,17 @@ const fs = require('fs');
 
 function getSalutation(name) {
   const hour = new Date().getHours();
-  let Salutation = '';
+  let salutation = '';
 
   if (hour >= 6 && hour < 12) {
-    Salutation = 'Bom dia';
+    salutation = 'Bom dia';
   } else if (hour >= 12 && hour < 18) {
-    Salutation = 'Boa tarde';
+    salutation = 'Boa tarde';
   } else {
-    Salutation = 'Boa noite';
+    salutation = 'Boa noite';
   }
 
-  return `${Salutation}, ${name}!\n`;
+  return `${salutation}, ${name}!\n`;
 }
 
 const names = ['João', 'Igor', 'Richar', 'Symon', 'Tatiana', 'Danilo'];
