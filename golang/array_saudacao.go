@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func getGreeting() string {
+func getSalutation() string {
 	now := time.Now()
 	hour := now.Hour()
 	if hour >= 6 && hour < 12 {
@@ -20,17 +20,17 @@ func getGreeting() string {
 
 func main() {
 	names := []string{"João", "Igor", "Richar", "Symon", "Tatiana", "Danilo"}
-	file, err := os.Create("saudacoes.txt")
+	file, err := os.Create("array_saudacoes_go.txt")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	defer file.Close()
 
-	greeting := getGreeting()
+	salutation := getSalutation()
 
 	for _, name := range names {
-		message := fmt.Sprintf("%s, %s!\n", greeting, name)
+		message := fmt.Sprintf("%s, %s!\n", salutation, name)
 		fmt.Print(message)
 		_, err := file.WriteString(message)
 		if err != nil {
@@ -39,6 +39,6 @@ func main() {
 		}
 	}
 
-	fmt.Println("Saudações salvas no arquivo saudacoes.txt")
+	fmt.Println("Saudações salvas no arquivo array_saudacoes_go.txt")
 }
 
