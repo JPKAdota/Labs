@@ -1,0 +1,64 @@
+{
+  "name": "teranft-app",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "teranft-app/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/teranft-app",
+        "main": "teranft-app/src/main.ts",
+        "tsConfig": "teranft-app/tsconfig.app.json",
+        "assets": ["teranft-app/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "teranft-app/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "teranft-app:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "teranft-app:build:development"
+        },
+        "production": {
+          "buildTarget": "teranft-app:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["teranft-app/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "teranft-app/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
